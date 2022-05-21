@@ -70,3 +70,14 @@ Route::get('/noticias/{id}', function ($id) {
     echo $id;
 
 })->where("id", "[0-9]+");
+
+Route::get('/cadastrar/{id?}', function ($id = null) {
+    echo $id == null ? "Não tem id" : $id;
+})->where("id", "[0-9]+");
+
+
+/* Aula de 11-05-2022 */
+
+Route::get('/{operation}/{v1}/{v2}', 'App\Http\Controllers\ArithmeticController@calc')
+    ->whereIn('operation', ['soma', 'subtrai', 'multiplica'])
+    ->where(["v1" => "[0-9]+", "v2" => "[0-9]+"]);
